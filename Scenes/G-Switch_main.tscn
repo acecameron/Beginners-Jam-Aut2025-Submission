@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://wx073oc4keg8"]
+
+[ext_resource type="Script" uid="uid://bek7l7u2aadaw" path="res://scripts/g_switch_main.gd" id="1_gwnq2"]
+[ext_resource type="PackedScene" uid="uid://gf84v8u0ae7h" path="res://scenes/g_switch_player.tscn" id="2_y5117"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gwnq2"]
+distance = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gwnq2")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_right = 1190.0
+offset_bottom = 673.0
+size_flags_horizontal = 6
+color = Color(0.76662, 0.76662, 0.76662, 1)
+
+[node name="Floor" type="StaticBody2D" parent="ParallaxBackground"]
+position = Vector2(0, 648)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/Floor"]
+offset_top = -10.0
+offset_right = 1186.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Floor"]
+position = Vector2(0, -7.5)
+shape = SubResource("WorldBoundaryShape2D_gwnq2")
+
+[node name="Ceilling" type="StaticBody2D" parent="ParallaxBackground"]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/Ceilling"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 1186.0
+offset_bottom = 11.0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Ceilling"]
+position = Vector2(0, 9)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_gwnq2")
+
+[node name="GSwitchPlayer" parent="." instance=ExtResource("2_y5117")]
+position = Vector2(28, 389)
+
+[node name="Camera2D2" type="Camera2D" parent="GSwitchPlayer"]
+position = Vector2(-27, 259)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
