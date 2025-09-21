@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyx6vfpv20nkc"]
+
+[ext_resource type="Script" uid="uid://dg2uoywhnbiv7" path="res://Scripts/level_base.gd" id="1_ikmr1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g0s86"]
+
+[node name="level_runner_base" type="Node2D"]
+script = ExtResource("1_ikmr1")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1, 627)
+shape = SubResource("WorldBoundaryShape2D_g0s86")
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
