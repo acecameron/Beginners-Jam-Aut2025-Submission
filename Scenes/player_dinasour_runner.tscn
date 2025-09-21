@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bglc811ndptqi"]
-
-[ext_resource type="PackedScene" uid="uid://cqlv30mlc06i6" path="res://Scenes/player_dinasour_normal.tscn" id="1_eyty2"]
-[ext_resource type="Script" uid="uid://beflsidyqoeyr" path="res://Scripts/player_dinasour_runner.gd" id="2_dmuap"]
-
-[node name="Player_Dinasour_Runner" instance=ExtResource("1_eyty2")]
-script = ExtResource("2_dmuap")
