@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd0fw5k852gyk"]
+
+[ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_ldv6u"]
+[ext_resource type="Script" uid="uid://r58p8fujpdhc" path="res://Scripts/level_flappy.gd" id="2_fpi4d"]
+[ext_resource type="PackedScene" uid="uid://e7d7wvwdmd0q" path="res://Scenes/player_flappy.tscn" id="3_3h3v2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ibogc"]
+normal = Vector2(0.0136973, 0.999906)
+distance = 19.0119
+
+[node name="level_runner_flappy" instance=ExtResource("1_ldv6u")]
+script = ExtResource("2_fpi4d")
+
+[node name="Ceiling" type="StaticBody2D" parent="." index="0"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" index="0"]
+shape = SubResource("WorldBoundaryShape2D_ibogc")
+
+[node name="Player_Flappy" parent="." index="3" instance=ExtResource("3_3h3v2")]
+position = Vector2(36, 332)
+
+[node name="Camera2D" type="Camera2D" parent="Player_Flappy" index="4"]
+position = Vector2(-36, -332)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0

@@ -3,13 +3,21 @@
 [ext_resource type="Script" uid="uid://dg2uoywhnbiv7" path="res://Scripts/level_base.gd" id="1_ikmr1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g0s86"]
+distance = -21.0
 
 [node name="level_runner_base" type="Node2D"]
 script = ExtResource("1_ikmr1")
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Background" type="ParallaxBackground" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1214.0
+offset_bottom = 680.0
+color = Color(0, 0.850703, 0.856863, 1)
+
+[node name="Floor" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Floor"]
 position = Vector2(1, 627)
 shape = SubResource("WorldBoundaryShape2D_g0s86")
 
