@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cd0fw5k852gyk"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_ldv6u"]
-[ext_resource type="Script" uid="uid://r58p8fujpdhc" path="res://Scripts/level_flappy.gd" id="2_ldv6u"]
-[ext_resource type="PackedScene" uid="uid://e7d7wvwdmd0q" path="res://Scenes/player_flappy.tscn" id="3_ldv6u"]
+[ext_resource type="Script" uid="uid://r58p8fujpdhc" path="res://Scripts/level_runner_flappy.gd" id="2_ldv6u"]
+[ext_resource type="PackedScene" uid="uid://e7d7wvwdmd0q" path="res://Scenes/player_runner_flappy.tscn" id="3_ldv6u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ibogc"]
 normal = Vector2(0, 1)
@@ -25,3 +25,5 @@ position = Vector2(500, 0)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
+
+[connection signal="game_over" from="Player_Flappy" to="." method="_on_player_flappy_game_over"]
