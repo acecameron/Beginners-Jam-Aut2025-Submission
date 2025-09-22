@@ -2,23 +2,25 @@ extends Node2D
 
 var score := 0
 var level := 0
+var high_score := 0
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
+@onready var high_score_box : HBoxContainer = $"CanvasLayer/Score_And_Highscore/HighScoreBox"
+@onready var high_score_label : Label = $"CanvasLayer/Score_And_Highscore/HighScoreBox/Hi_Score_Score"
+@onready var game_over_ui : Control = $"CanvasLayer/Game_Over"
 
 var level_runner_normal := preload("res://Scenes/level_normal.tscn")
 var level_runner_flappy := preload("res://Scenes/level_flappy.tscn")
 var level_runner_g_switch := preload("res://Scenes/level_g_switch.tscn")
 
-var level_scenes : Array[PackedScene]
+var level_scenes : Array[PackedScene] = [level_runner_normal, level_runner_flappy, level_runner_g_switch]
 var current_level : Node2D
 
 func _ready() -> void:
 	score_label.text = "00000"
 	$ScoreTimer.start()
-	
-	# put all levels in an array for easier random selection
-	level_scenes = [level_runner_normal, level_runner_flappy, level_runner_g_switch]
-	
+	high_score_box.hide()
+	game_over_ui.hide()
 	# start with one level
 	current_level = level_runner_g_switch.instantiate()
 	add_child(current_level)
@@ -49,3 +51,15 @@ func replace_level() -> void:
 	
 	current_level = new_scene.instantiate()
 	add_child(current_level)
+	
+func stop_game():
+	$ScoreTimer.stop()
+	if high_score < score:
+		high_score_label.text = String.num_int64(score).pad_zeros(5)
+	game_over_ui.show()
+	high_score_box.show()
+
+
+func _on_start_over_button_pressed() -> void:
+	print("Start over pressed")
+	_ready()
