@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikd7w"]
 size = Vector2(40, 40)
 
-[node name="Runner_Obstacle_Base" type="Area2D" groups=["Obstacles"]]
+[node name="Obstacle_Base" type="Area2D" groups=["Obstacles"]]
 script = ExtResource("1_iwh6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

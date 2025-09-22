@@ -5,9 +5,9 @@ var level := 0
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
 
-var level_runner_normal := preload("res://Scenes/level_runner_normal.tscn")
-var level_runner_flappy := preload("res://Scenes/level_runner_flappy.tscn")
-var level_runner_g_switch := preload("res://Scenes/level_runner_g_switch.tscn")
+var level_runner_normal := preload("res://Scenes/level_normal.tscn")
+var level_runner_flappy := preload("res://Scenes/level_flappy.tscn")
+var level_runner_g_switch := preload("res://Scenes/level_g_switch.tscn")
 
 var level_scenes : Array[PackedScene]
 var current_level : Node2D

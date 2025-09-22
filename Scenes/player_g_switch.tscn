@@ -41,7 +41,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6xk0"]
 size = Vector2(70, 56)
 
-[node name="Player_Runner_G-Switch" instance=ExtResource("1_bhlas")]
+[node name="Player_G-Switch" instance=ExtResource("1_bhlas")]
 slide_on_ceiling = false
 script = ExtResource("2_ujqre")
 

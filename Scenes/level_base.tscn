@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dg2uoywhnbiv7" path="res://Scripts/level_base.gd" id="1_ikmr1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g0s86"]
-distance = -21.0
+distance = -12.0
 
-[node name="level_runner_base" type="Node2D"]
+[node name="level_base" type="Node2D"]
 script = ExtResource("1_ikmr1")
 
 [node name="Background" type="ParallaxBackground" parent="."]

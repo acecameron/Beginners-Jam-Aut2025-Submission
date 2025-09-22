@@ -11,5 +11,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMPFORCE  # already negative, so no need to multiply
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
 		velocity.y *= 0.5
+
 	velocity.y += GRAVITY * delta
 	move()

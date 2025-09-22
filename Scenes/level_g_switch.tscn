@@ -1,13 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://cei0r77srffog"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_xhpfb"]
-[ext_resource type="PackedScene" uid="uid://bodxxwraqlwv2" path="res://Scenes/player_g_switch.tscn" id="2_o3ri2"]
+[ext_resource type="PackedScene" uid="uid://bodxxwraqlwv2" path="res://Scenes/player_g_switch.tscn" id="2_ln2fx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhpfb"]
 normal = Vector2(0, 1)
 distance = 3.0
 
 [node name="level_g_switch" instance=ExtResource("1_xhpfb")]
+
+[node name="ColorRect" type="ColorRect" parent="Background/Floor" index="1"]
+offset_top = 638.0
+offset_right = 1166.0
+offset_bottom = 655.0
+color = Color(0, 0, 0, 1)
 
 [node name="Ceiling" type="StaticBody2D" parent="Background" index="2"]
 
@@ -19,11 +25,11 @@ offset_right = 1153.0
 offset_bottom = 17.0
 color = Color(0, 0, 0, 1)
 
-[node name="Player_Runner_G-Switch" parent="." index="2" instance=ExtResource("2_o3ri2")]
-position = Vector2(119, 414)
+[node name="Player_G-Switch" parent="." index="2" instance=ExtResource("2_ln2fx")]
+position = Vector2(94, 486)
 
-[node name="Camera2D" type="Camera2D" parent="Player_Runner_G-Switch" index="4"]
-position = Vector2(-99, -583)
+[node name="Camera2D" type="Camera2D" parent="Player_G-Switch" index="4"]
+position = Vector2(500, 0)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
