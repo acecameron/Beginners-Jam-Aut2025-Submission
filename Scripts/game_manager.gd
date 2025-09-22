@@ -5,28 +5,47 @@ var level := 0
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
 
-var level_runner_nomral := preload("res://Scenes/level_normal.tscn")
-var level_runner_flappy := preload("res://Scenes/level_flappy.tscn")
-var level_runner_g_switch := preload("res://Scenes/level_g_switch.tscn")
+var level_runner_normal := preload("res://Scenes/level_runner_normal.tscn")
+var level_runner_flappy := preload("res://Scenes/level_runner_flappy.tscn")
+var level_runner_g_switch := preload("res://Scenes/level_runner_g_switch.tscn")
 
-var current_level : Node2D 
+var level_scenes : Array[PackedScene]
+var current_level : Node2D
 
 func _ready() -> void:
 	score_label.text = "00000"
 	$ScoreTimer.start()
+	
+	# put all levels in an array for easier random selection
+	level_scenes = [level_runner_normal, level_runner_flappy, level_runner_g_switch]
+	
+	# start with one level
 	current_level = level_runner_g_switch.instantiate()
 	add_child(current_level)
 
 func update_score_label() -> void:
 	score_label.text = String.num_int64(score).pad_zeros(5)
 
-
-func _process(delta: float) -> void:
-	pass
-		
 func _on_score_timer_timeout() -> void:
-	score += 1   
+	score += 1 
 	update_score_label()
+	
+	# Every 100 points, replace the level
+	if score % 100 == 0:
+		replace_level()
 
-func _on_start_over_button_pressed() -> void:
-	pass # Replace with function body.
+func replace_level() -> void:
+	if not current_level:
+		return
+	
+	current_level.queue_free()
+	
+	var new_scene : PackedScene = null
+	while true:
+		var candidate = level_scenes.pick_random()
+		if candidate.resource_path != current_level.scene_file_path:
+			new_scene = candidate
+			break
+	
+	current_level = new_scene.instantiate()
+	add_child(current_level)
