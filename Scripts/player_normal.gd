@@ -3,6 +3,8 @@ extends "player_base.gd"
 const GRAVITY = 1200
 const JUMPFORCE = -600
 
+
+
 func _physics_process(delta: float) -> void:
 	if not alive:
 		return

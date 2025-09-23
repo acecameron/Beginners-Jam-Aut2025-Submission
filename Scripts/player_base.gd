@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 signal game_over
 
-var speed := 150
+@export var speed := 150
 var alive := true
 
 func _ready():
 	velocity.x = speed
+	print(speed)
 
 func move():
 	move_and_slide()
