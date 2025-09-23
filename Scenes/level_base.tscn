@@ -21,6 +21,10 @@ color = Color(0, 0.850703, 0.856863, 1)
 position = Vector2(1, 627)
 shape = SubResource("WorldBoundaryShape2D_g0s86")
 
+[node name="Obstacle_Spawn" type="Marker2D" parent="Background"]
+position = Vector2(1175, 620)
+
 [node name="ObstacleTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]

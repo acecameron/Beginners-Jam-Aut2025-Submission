@@ -34,7 +34,8 @@ shape = SubResource("RectangleShape2D_0xnfe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_156ip")
-animation = &"death"
+animation = &"running"
+speed_scale = 3.0
 
 [node name="enemy_collison_area" type="Area2D" parent="."]
 

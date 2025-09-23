@@ -11,3 +11,11 @@ func _ready() -> void:
 
 func set_player_speed(new_speed: int = 50) -> void:
 	player.speed = new_speed
+
+
+func obstacle_spawn(rnd):
+	var obstacle
+	if rnd == 1:
+		obstacle = preload("res://Scenes/g_switch_obstacle_1.tscn").instantiate()
+		obstacle.global_position = $Background/Obstacle_Spawn.position
+		add_child(obstacle)

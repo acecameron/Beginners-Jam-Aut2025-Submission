@@ -7,14 +7,13 @@ var alive := true
 
 func _ready():
 	velocity.x = speed
-	print(speed)
 
 func move():
 	move_and_slide()
 	$AnimatedSprite2D.play("running")
 	
 func die():
-	print("Stopping jow")
+	print("Stopping now")
 	alive = false
 	$AnimatedSprite2D.play("death")
 	emit_signal("game_over")

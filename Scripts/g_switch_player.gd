@@ -5,7 +5,6 @@ var gravity = 50
 var jump := 50
 var dir = Vector2.DOWN
 
-	
 func _ready() -> void:
 	velocity.x = speed
 	$AnimatedSprite2D.play("running")
@@ -29,4 +28,3 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity
 	move_and_slide()
 	velocity.y = lerp(velocity.y, 0.0, 0.2)
-	

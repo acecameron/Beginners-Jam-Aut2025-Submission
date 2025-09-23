@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cei0r77srffog"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_xhpfb"]
-[ext_resource type="PackedScene" uid="uid://bodxxwraqlwv2" path="res://Scenes/player_runner_g_switch.tscn" id="2_ln2fx"]
-[ext_resource type="Script" uid="uid://0voh8chk833h" path="res://Scripts/level_g_switch.gd" id="2_uvxt0"]
+[ext_resource type="PackedScene" uid="uid://bodxxwraqlwv2" path="res://Scenes/player_g_switch.tscn" id="2_ln2fx"]
+[ext_resource type="Script" uid="uid://cvecvcvrhaiwy" path="res://Scripts/level_g_switch.gd" id="2_uvxt0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhpfb"]
 normal = Vector2(0, 1)
@@ -35,5 +35,3 @@ position = Vector2(500, 0)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
-
-[connection signal="game_over" from="Player_G-Switch" to="." method="_on_player_g_switch_game_over"]

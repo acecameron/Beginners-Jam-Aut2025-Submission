@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ck1wll4j65b6p" path="res://Scripts/obstacle_base.gd" id="1_iwh6q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikd7w"]
-size = Vector2(40, 40)
+size = Vector2(82, 38)
 
 [node name="Obstacle_Base" type="Area2D" groups=["Obstacles"]]
 script = ExtResource("1_iwh6q")
@@ -19,3 +19,7 @@ offset_bottom = 20.0
 color = Color(0.917647, 0.0392157, 0.0392157, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
