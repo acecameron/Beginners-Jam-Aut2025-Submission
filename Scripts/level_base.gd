@@ -1,12 +1,13 @@
 extends Node2D
 
-var obstacle_paths : Array
+var obstacle_paths : Array [String]
 var main_game = get_parent()
 var player : CharacterBody2D
-
+var min_obstacle = 1
+var max_obstacle = 1
 
 func _on_obstacle_timer_timeout() -> void:
-	var rnd = randi_range(1, 1)
+	var rnd = randi_range(min_obstacle, max_obstacle)
 	obstacle_spawn(rnd)
 
 

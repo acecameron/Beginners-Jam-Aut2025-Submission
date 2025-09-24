@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal game_over
 
-@export var speed := 150
+@export var speed := 300
 var alive := true
 
 func _ready():
@@ -15,6 +15,7 @@ func move():
 func die():
 	print("Stopping now")
 	alive = false
+	velocity.x = 0
 	$AnimatedSprite2D.play("death")
 	emit_signal("game_over")
 

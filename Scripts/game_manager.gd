@@ -3,18 +3,18 @@ extends Node2D
 var score := 0
 var level := 0
 var high_score := 0
-var speed := 150
+var speed := 300
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
 @onready var high_score_box : HBoxContainer = $"CanvasLayer/Score_And_Highscore/HighScoreBox"
 @onready var high_score_label : Label = $"CanvasLayer/Score_And_Highscore/HighScoreBox/Hi_Score_Score"
 @onready var game_over_ui : Control = $"CanvasLayer/Game_Over"
 
-var level_runner_normal := preload("res://Scenes/level_normal.tscn")
-var level_runner_flappy := preload("res://Scenes/level_flappy.tscn")
-var level_runner_g_switch := preload("res://Scenes/level_g_switch.tscn")
+var level_normal := preload("res://Scenes/level_normal.tscn")
+var level_flappy := preload("res://Scenes/level_flappy.tscn")
+var level_g_switch := preload("res://Scenes/level_g_switch.tscn")
 
-var level_scenes : Array[PackedScene] = [level_runner_normal, level_runner_flappy, level_runner_g_switch]
+var level_scenes : Array[PackedScene] = [level_normal, level_flappy, level_g_switch]
 var current_level : Node2D
 
 func _ready() -> void:
@@ -23,7 +23,7 @@ func _ready() -> void:
 	high_score_box.hide()
 	game_over_ui.hide()
 	# start with one level
-	current_level = level_runner_g_switch.instantiate()
+	current_level = level_g_switch.instantiate()
 	add_child(current_level)
 
 func update_score_label() -> void:
@@ -52,7 +52,8 @@ func replace_level() -> void:
 	
 	current_level = new_scene.instantiate()
 	add_child(current_level)
-	print(speed)
+	print(current_level)
+	print(current_level.get_script())
 	current_level.set_player_speed(speed)
 	speed += 50
 	
