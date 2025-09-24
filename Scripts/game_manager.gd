@@ -34,7 +34,7 @@ func _on_score_timer_timeout() -> void:
 	update_score_label()
 	
 	# Every 100 points, replace the level
-	if score % 30 == 0:
+	if score % 100 == 0:
 		replace_level()
 
 func replace_level() -> void:
@@ -55,7 +55,7 @@ func replace_level() -> void:
 	print(current_level)
 	print(current_level.get_script())
 	current_level.set_player_speed(speed)
-	speed += 50
+	speed += 10
 	
 func stop_game():
 	$ScoreTimer.stop()

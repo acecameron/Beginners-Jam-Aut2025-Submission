@@ -1,18 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://df7stk0gsbn0x"]
 
-[ext_resource type="Script" uid="uid://ck1wll4j65b6p" path="res://Scripts/runner_obstacle_base.gd" id="1_iwh6q"]
+[ext_resource type="Script" uid="uid://ck1wll4j65b6p" path="res://Scripts/obstacle_base.gd" id="1_iwh6q"]
 
 [node name="Obstacle_Base" type="Area2D" groups=["Obstacles"]]
 script = ExtResource("1_iwh6q")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0.917647, 0.0392157, 0.0392157, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
