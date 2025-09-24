@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bax7kidia1wgv"]
+
+[ext_resource type="PackedScene" uid="uid://df7stk0gsbn0x" path="res://Scenes/obstacle_base.tscn" id="1_7i2vu"]
+[ext_resource type="Texture2D" uid="uid://dv5slvmufvuth" path="res://Sprites/Obsacle_Sprites/Cactus.png" id="2_pilt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i2vu"]
+size = Vector2(37, 59)
+
+[node name="obstacle_nomral_1" instance=ExtResource("1_7i2vu")]
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_pilt6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_7i2vu")
