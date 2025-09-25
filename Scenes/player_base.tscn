@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csa1rfvrin6dy" path="res://Sprites/PlaceholderPlayer.png" id="2_mv22w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xnfe"]
-size = Vector2(70, 56)
+size = Vector2(68, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_156ip"]
 animations = [{

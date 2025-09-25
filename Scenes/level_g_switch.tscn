@@ -47,3 +47,5 @@ position = Vector2(500, 0)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
+
+[connection signal="game_over" from="Player_G-Switch" to="." method="_on_player_g_switch_game_over"]

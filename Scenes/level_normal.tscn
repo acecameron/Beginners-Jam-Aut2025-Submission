@@ -24,3 +24,5 @@ position = Vector2(500, 0)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
+
+[connection signal="game_over" from="Player_Dinasour" to="." method="_on_player_dinasour_game_over"]
