@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bglc811ndptqi"]
 
 [ext_resource type="PackedScene" uid="uid://cqlv30mlc06i6" path="res://Scenes/player_base.tscn" id="1_eyty2"]
-[ext_resource type="Script" uid="uid://beflsidyqoeyr" path="res://Scripts/player_runner_normal.gd" id="2_6bfks"]
+[ext_resource type="Script" uid="uid://beflsidyqoeyr" path="res://Scripts/player_normal.gd" id="2_6bfks"]
 [ext_resource type="Texture2D" uid="uid://bep1sugg3iamn" path="res://Sprites/Player_Sprites/NormalSpriteSheet.png" id="3_n1upi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6v41"]
@@ -51,6 +51,10 @@ script = ExtResource("2_6bfks")
 [node name="Sprite2D" parent="." index="0"]
 visible = false
 
+[node name="physics_collision" parent="." index="1"]
+position = Vector2(3, -7)
+
 [node name="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_muln1")
 animation = &"death"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://e7d7wvwdmd0q"]
 
 [ext_resource type="PackedScene" uid="uid://cqlv30mlc06i6" path="res://Scenes/player_base.tscn" id="1_f62gv"]
-[ext_resource type="Script" uid="uid://bwo8r4gp1galm" path="res://Scripts/player_runner_flappy.gd" id="2_bt04x"]
+[ext_resource type="Script" uid="uid://bwo8r4gp1galm" path="res://Scripts/player_flappy.gd" id="2_bt04x"]
 
 [node name="Player_Flappy" instance=ExtResource("1_f62gv")]
 script = ExtResource("2_bt04x")

@@ -8,11 +8,8 @@ size = Vector2(78, 60)
 
 [node name="obstacle_nomral_2" instance=ExtResource("1_dt4b4")]
 
-[node name="ColorRect" parent="." index="0"]
-visible = false
-
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_4q776")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_4q776")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_4q776")
