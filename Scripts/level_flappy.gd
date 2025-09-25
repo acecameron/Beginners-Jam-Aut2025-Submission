@@ -11,3 +11,13 @@ func _ready() -> void:
 
 func set_player_speed(new_speed: int = 50) -> void:
 	player.speed = new_speed
+
+func obstacle_spawn(rnd):
+	var obstacle = preload("res://Scenes/obstacle_flappy.tscn").instantiate()
+	obstacle.global_position = $Background/Obstacle_Spawn.position
+	#I fucking hate this part, it should be changed into something more optimal
+	if rnd == 1:
+		obstacle.global_position.y = $Background/Obstacle_Spawn.position.y - 200
+	elif rnd == 2:
+		obstacle.global_position.y = $Background/Obstacle_Spawn.position.y - 400
+	add_child(obstacle)
