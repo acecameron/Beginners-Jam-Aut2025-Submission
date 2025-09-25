@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dld1y4rq5bn0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtft"]
+
+[node name="obstacle_flappy" type="Node2D" groups=["Obstacles"]]
+
+[node name="pipe_above" type="Area2D" parent="." groups=["Obstacles"]]
+position = Vector2(0, -62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_above"]
+shape = SubResource("RectangleShape2D_kqtft")
+
+[node name="Sprite2D" type="Sprite2D" parent="pipe_above"]
+
+[node name="pipe_below" type="Area2D" parent="." groups=["Obstacles"]]
+position = Vector2(0, 62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_below"]
+shape = SubResource("RectangleShape2D_kqtft")
+
+[node name="Sprite2D" type="Sprite2D" parent="pipe_below"]
