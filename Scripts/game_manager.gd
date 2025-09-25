@@ -23,7 +23,7 @@ func _ready() -> void:
 	high_score_box.hide()
 	game_over_ui.hide()
 	# start with one level
-	current_level = level_g_switch.instantiate()
+	current_level = level_normal.instantiate()
 	add_child(current_level)
 
 func update_score_label() -> void:
@@ -55,7 +55,7 @@ func replace_level() -> void:
 	print(current_level)
 	print(current_level.get_script())
 	current_level.set_player_speed(speed)
-	speed += 50
+	speed += 10
 	
 func stop_game():
 	$ScoreTimer.stop()
