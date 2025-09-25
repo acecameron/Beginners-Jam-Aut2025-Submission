@@ -1,8 +1,10 @@
 extends "level_base.gd"
 
-
-func _on_player_flappy_game_over() -> void:
+func _on_player_dinasour_game_over() -> void:
+	print("Normal game over")
 	main_game.stop_game()
+
+
 	
 func _ready() -> void:
 	main_game = get_parent()

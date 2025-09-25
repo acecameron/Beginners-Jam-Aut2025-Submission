@@ -2,6 +2,7 @@ extends "level_base.gd"
 
 
 func _on_player_g_switch_game_over() -> void:
+	print("G-Switch game over")
 	main_game.stop_game()
 	
 func _ready() -> void:
