@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_ldv6u"]
 [ext_resource type="Script" uid="uid://r58p8fujpdhc" path="res://Scripts/level_flappy.gd" id="2_ldv6u"]
-[ext_resource type="Texture2D" uid="uid://c4d0khc2twae4" path="res://Sprites/Flappy_Background.png" id="3_fpi4d"]
+[ext_resource type="Texture2D" uid="uid://dsjm1g5fmiecs" path="res://Sprites/Backgrounds/Background_flappy.png" id="3_fpi4d"]
 [ext_resource type="PackedScene" uid="uid://e7d7wvwdmd0q" path="res://Scenes/player_flappy.tscn" id="3_ldv6u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ibogc"]
@@ -24,8 +24,7 @@ visible = false
 [node name="ParallaxLayer" parent="Background" index="3"]
 motion_mirroring = Vector2(1152, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Background" index="4"]
-position = Vector2(576, 324)
+[node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 texture = ExtResource("3_fpi4d")
 
 [node name="Player_Flappy" parent="." index="3" instance=ExtResource("3_ldv6u")]
