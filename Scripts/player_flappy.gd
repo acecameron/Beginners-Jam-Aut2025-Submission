@@ -10,6 +10,7 @@ func _physics_process(delta: float) -> void:
 		die()
 	if Input.is_action_just_pressed("Jump"):
 		velocity.y = JUMPFORCE  
+		$AnimatedSprite2D.play("jump")
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
 		velocity.y *= 0.5
 	velocity.y += GRAVITY * delta
