@@ -20,8 +20,8 @@ func obstacle_spawn(rnd):
 		obstacle = preload("res://Scenes/g_switch_obstacle_1.tscn").instantiate()
 		obstacle.global_position = $Background/Obstacle_Spawn.position
 		add_child(obstacle)
-	if rnd == 2:
-		obstacle = preload("res://Scenes/g_switch_obstacle_2.tscn").instantiate()
-		obstacle.global_position = $Background/Obstacle_Spawn.position
-		add_child(obstacle)
-		print("Laser")
+	#if rnd == 2:
+		#obstacle = preload("res://Scenes/g_switch_obstacle_2.tscn").instantiate()
+		#obstacle.global_position = $Background/Obstacle_Spawn.position
+		#add_child(obstacle)
+		#print("Laser")
