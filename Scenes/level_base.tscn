@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyx6vfpv20nkc"]
+[gd_scene load_steps=3 format=3 uid="uid://dyx6vfpv20nkc"]
 
 [ext_resource type="Script" uid="uid://dg2uoywhnbiv7" path="res://Scripts/level_base.gd" id="1_ikmr1"]
-[ext_resource type="Script" uid="uid://hwitk6j5lihb" path="res://Scripts/background.gd" id="2_fhsqj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g0s86"]
 distance = -12.0
@@ -10,7 +9,6 @@ distance = -12.0
 script = ExtResource("1_ikmr1")
 
 [node name="Background" type="ParallaxBackground" parent="."]
-script = ExtResource("2_fhsqj")
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 offset_right = 1214.0
