@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp1hn6jtuswhx"]
+
+[ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_8pwfw"]
+[ext_resource type="Script" uid="uid://wcwvm1w355xt" path="res://Scripts/level_normal.gd" id="2_qrjwe"]
+[ext_resource type="PackedScene" uid="uid://bglc811ndptqi" path="res://Scenes/player_normal.tscn" id="3_qrjwe"]
+[ext_resource type="Texture2D" uid="uid://dlums3yq14hjk" path="res://Sprites/Normal_Background.png" id="3_tfupq"]
+
+[node name="level_normal" instance=ExtResource("1_8pwfw")]
+script = ExtResource("2_qrjwe")
+
+[node name="ColorRect" parent="Background" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" index="4"]
+position = Vector2(575.5, 341.5)
+scale = Vector2(1.0026, 0.915775)
+texture = ExtResource("3_tfupq")
+
+[node name="Player_Dinasour" parent="." index="2" instance=ExtResource("3_qrjwe")]
+position = Vector2(80, 533)
+
+[node name="Camera2D" type="Camera2D" parent="Player_Dinasour" index="4"]
+position = Vector2(500, 0)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
+
+[connection signal="game_over" from="Player_Dinasour" to="." method="_on_player_dinasour_game_over"]

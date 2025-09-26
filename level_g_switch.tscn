@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cei0r77srffog"]
+
+[ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_xhpfb"]
+[ext_resource type="PackedScene" uid="uid://bodxxwraqlwv2" path="res://Scenes/player_g_switch.tscn" id="2_ln2fx"]
+[ext_resource type="Script" uid="uid://cvecvcvrhaiwy" path="res://Scripts/level_g_switch.gd" id="2_uvxt0"]
+[ext_resource type="Texture2D" uid="uid://cu8kdm2eeilg8" path="res://Sprites/Backgrounds/Background_G-Switch.png" id="3_cqvi5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhpfb"]
+normal = Vector2(0, 1)
+distance = 3.0
+
+[node name="level_g_switch" instance=ExtResource("1_xhpfb")]
+script = ExtResource("2_uvxt0")
+
+[node name="ColorRect" parent="Background" index="0"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Background/Floor" index="1"]
+offset_top = 638.0
+offset_right = 1166.0
+offset_bottom = 655.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="Background" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Ceiling" index="0"]
+shape = SubResource("WorldBoundaryShape2D_xhpfb")
+
+[node name="ColorRect" type="ColorRect" parent="Background/Ceiling" index="1"]
+offset_right = 1153.0
+offset_bottom = 17.0
+color = Color(0, 0, 0, 1)
+
+[node name="ParallaxLayer" parent="Background" index="4"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1206.0
+offset_bottom = 658.0
+texture = ExtResource("3_cqvi5")
+
+[node name="Player_G-Switch" parent="." index="2" instance=ExtResource("2_ln2fx")]
+position = Vector2(94, 486)
+
+[node name="Camera2D" type="Camera2D" parent="Player_G-Switch" index="4"]
+position = Vector2(500, 0)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
+
+[connection signal="game_over" from="Player_G-Switch" to="." method="_on_player_g_switch_game_over"]
