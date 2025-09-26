@@ -1,18 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxumisw6bildd"]
+[gd_scene load_steps=3 format=3 uid="uid://dxumisw6bildd"]
 
-[ext_resource type="PackedScene" uid="uid://df7stk0gsbn0x" path="res://Scenes/runner_obstacle_small.tscn" id="1_dt4b4"]
 [ext_resource type="Texture2D" uid="uid://crsls4u3lnesq" path="res://Sprites/Obsacle_Sprites/Cacti.png" id="2_4q776"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q776"]
 size = Vector2(78, 60)
 
-[node name="obstacle_nomral_2" instance=ExtResource("1_dt4b4")]
+[node name="obstacle_nomral_2" type="Area2D" groups=["Obstacles"]]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4q776")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4q776")
-
-[node name="ColorRect" parent="." index="3"]
-visible = false

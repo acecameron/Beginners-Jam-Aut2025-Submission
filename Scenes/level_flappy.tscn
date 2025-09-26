@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd0fw5k852gyk"]
+[gd_scene load_steps=7 format=3 uid="uid://cd0fw5k852gyk"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_ldv6u"]
 [ext_resource type="Script" uid="uid://r58p8fujpdhc" path="res://Scripts/level_flappy.gd" id="2_ldv6u"]
 [ext_resource type="Texture2D" uid="uid://dsjm1g5fmiecs" path="res://Sprites/Backgrounds/Background_flappy.png" id="3_fpi4d"]
 [ext_resource type="PackedScene" uid="uid://e7d7wvwdmd0q" path="res://Scenes/player_flappy.tscn" id="3_ldv6u"]
+[ext_resource type="FontFile" uid="uid://xfehdl70wchs" path="res://Data/Fonts/nintendo-nes-font.otf" id="4_3h3v2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ibogc"]
 normal = Vector2(0, 1)
@@ -27,7 +28,18 @@ motion_mirroring = Vector2(1152, 0)
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 texture = ExtResource("3_fpi4d")
 
-[node name="Player_Flappy" parent="." index="3" instance=ExtResource("3_ldv6u")]
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = 18.0
+offset_top = 202.0
+offset_right = 1498.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("4_3h3v2")
+theme_override_font_sizes/font_size = 50
+text = "Press [Space] to fly"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_Flappy" parent="." index="4" instance=ExtResource("3_ldv6u")]
 position = Vector2(134, 422)
 
 [node name="Camera2D" type="Camera2D" parent="Player_Flappy" index="0"]

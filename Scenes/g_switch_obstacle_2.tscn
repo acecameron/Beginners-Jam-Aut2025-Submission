@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://db5pq1l2j4un5"]
+[gd_scene load_steps=10 format=3 uid="uid://db5pq1l2j4un5"]
 
-[ext_resource type="PackedScene" uid="uid://df7stk0gsbn0x" path="res://Scenes/runner_obstacle_small.tscn" id="1_jkyfq"]
 [ext_resource type="Texture2D" uid="uid://c1ak4br012kge" path="res://Sprites/Obsacle_Sprites/LaserSpriteSheet.png" id="2_5v8yv"]
 [ext_resource type="Script" uid="uid://ba86pr3v04fow" path="res://Scripts/g_switch_obstacle_2.gd" id="2_sdggv"]
 
@@ -50,16 +49,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkyfq"]
 size = Vector2(2569, 54)
 
-[node name="G-Switch_Obstacle_2" instance=ExtResource("1_jkyfq")]
+[node name="G-Switch_Obstacle_2" type="Area2D" groups=["Obstacles"]]
 script = ExtResource("2_sdggv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 16)
 scale = Vector2(10, 1)
 sprite_frames = SubResource("SpriteFrames_tusss")
 animation = &"Laser"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_jkyfq")
 

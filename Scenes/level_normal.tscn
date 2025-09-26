@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp1hn6jtuswhx"]
+[gd_scene load_steps=6 format=3 uid="uid://cp1hn6jtuswhx"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_8pwfw"]
 [ext_resource type="Script" uid="uid://wcwvm1w355xt" path="res://Scripts/level_normal.gd" id="2_qrjwe"]
 [ext_resource type="PackedScene" uid="uid://bglc811ndptqi" path="res://Scenes/player_normal.tscn" id="3_qrjwe"]
 [ext_resource type="Texture2D" uid="uid://dlums3yq14hjk" path="res://Sprites/Normal_Background.png" id="3_tfupq"]
+[ext_resource type="FontFile" uid="uid://xfehdl70wchs" path="res://Data/Fonts/nintendo-nes-font.otf" id="4_6uugn"]
 
 [node name="level_normal" instance=ExtResource("1_8pwfw")]
 script = ExtResource("2_qrjwe")
@@ -16,7 +17,18 @@ position = Vector2(575.5, 341.5)
 scale = Vector2(1.0026, 0.915775)
 texture = ExtResource("3_tfupq")
 
-[node name="Player_Dinasour" parent="." index="2" instance=ExtResource("3_qrjwe")]
+[node name="Label" type="Label" parent="." index="2"]
+offset_left = 18.0
+offset_top = 202.0
+offset_right = 1498.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("4_6uugn")
+theme_override_font_sizes/font_size = 50
+text = "Press [Space] to jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_Dinasour" parent="." index="3" instance=ExtResource("3_qrjwe")]
 position = Vector2(80, 533)
 
 [node name="Camera2D" type="Camera2D" parent="Player_Dinasour" index="4"]
