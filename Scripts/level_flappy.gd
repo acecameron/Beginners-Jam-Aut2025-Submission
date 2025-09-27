@@ -7,8 +7,8 @@ func _on_player_flappy_game_over() -> void:
 func _ready() -> void:
 	main_game = get_parent()
 	player = $"Player_Flappy"
-	min_time = 0.7
-	max_time = 1.0
+	min_time = 1.5
+	max_time = 2
 	
 func _process(delta: float) -> void:
 	if is_playing:

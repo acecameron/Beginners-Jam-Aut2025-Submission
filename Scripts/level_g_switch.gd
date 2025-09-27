@@ -8,8 +8,8 @@ func _on_player_g_switch_game_over() -> void:
 func _ready() -> void:
 	main_game = get_parent()
 	player = $"Player_G-Switch"
-	min_time = 0.2
-	max_time = 0.5
+	min_time = 0.5
+	max_time = 1 
 
 func _process(delta: float) -> void:
 	if is_playing:

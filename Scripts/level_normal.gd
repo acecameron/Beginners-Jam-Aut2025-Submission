@@ -10,7 +10,7 @@ func _ready() -> void:
 	main_game = get_parent()
 	max_obstacle = 2
 	player = $"Player_Dinasour"
-	min_time = 0.5
+	min_time = 1.0
 	max_time = 1.5
 	
 func set_player_speed(new_speed: int = 50) -> void:

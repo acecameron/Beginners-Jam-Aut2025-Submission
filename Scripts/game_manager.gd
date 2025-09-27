@@ -37,6 +37,9 @@ func _on_score_timer_timeout() -> void:
 	# Every 100 points, replace the level
 	if score % 30 == 0:
 		replace_level()
+	if score % 60 == 0:
+		speed += 100
+		
 
 func replace_level() -> void:
 	if not current_level:
@@ -50,14 +53,11 @@ func replace_level() -> void:
 		if candidate.resource_path != current_level.scene_file_path:
 			new_scene = candidate
 			break
-	
 	current_level = new_scene.instantiate()
-	add_child(current_level)
-	print(current_level)
-	print(current_level.get_script())
-	speed += 130
 	current_level.set_game_speed(speed)
-	
+
+	add_child(current_level)
+
 	
 func stop_game():
 	$ScoreTimer.stop()
