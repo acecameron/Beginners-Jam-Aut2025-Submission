@@ -19,14 +19,14 @@ position = Vector2(0, -64)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" index="0"]
 shape = SubResource("WorldBoundaryShape2D_ibogc")
 
-[node name="ColorRect" parent="Background" index="0"]
-visible = false
-
-[node name="ParallaxLayer" parent="Background" index="3"]
+[node name="ParallaxLayer" parent="Background" index="0"]
 motion_mirroring = Vector2(1152, 0)
 
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 texture = ExtResource("3_fpi4d")
+
+[node name="ObstacleTimer" parent="." index="2"]
+wait_time = 0.7
 
 [node name="Label" type="Label" parent="." index="3"]
 z_index = 1

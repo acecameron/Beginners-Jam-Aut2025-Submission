@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs7r041k7q4as"]
+
+[ext_resource type="PackedScene" uid="uid://df7stk0gsbn0x" path="res://Scenes/obstacle_base.tscn" id="1_hfguo"]
+[ext_resource type="Script" uid="uid://d6gv0bm4g5i0" path="res://Scripts/g_switch_obstacle_3.gd" id="2_1nh8a"]
+[ext_resource type="Texture2D" uid="uid://c48clwnkpnvde" path="res://Sprites/Obsacle_Sprites/LaserStarSpriteSheet.png" id="3_xp82v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h82vt"]
+atlas = ExtResource("3_xp82v")
+region = Rect2(0, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7x1e"]
+atlas = ExtResource("3_xp82v")
+region = Rect2(75, 0, 75, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ermhx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h82vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7x1e")
+}],
+"loop": true,
+"name": &"Spin",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5b61"]
+size = Vector2(72, 73)
+
+[node name="G_Switch_Obstacle_3" instance=ExtResource("1_hfguo")]
+script = ExtResource("2_1nh8a")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
+scale = Vector2(3.6, 3.65)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ermhx")
+animation = &"Spin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_p5b61")

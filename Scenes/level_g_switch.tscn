@@ -13,14 +13,15 @@ distance = 3.0
 [node name="level_g_switch" instance=ExtResource("1_xhpfb")]
 script = ExtResource("2_uvxt0")
 
-[node name="ColorRect" parent="Background" index="0"]
-visible = false
+[node name="ParallaxLayer" parent="Background" index="0"]
+motion_mirroring = Vector2(1152, 0)
 
-[node name="ColorRect" type="ColorRect" parent="Background/Floor" index="1"]
-offset_top = 638.0
-offset_right = 1166.0
-offset_bottom = 655.0
-color = Color(0, 0, 0, 1)
+[node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1206.0
+offset_bottom = 658.0
+texture = ExtResource("3_cqvi5")
 
 [node name="Ceiling" type="StaticBody2D" parent="Background" index="2"]
 
@@ -32,15 +33,11 @@ offset_right = 1153.0
 offset_bottom = 17.0
 color = Color(0, 0, 0, 1)
 
-[node name="ParallaxLayer" parent="Background" index="4"]
-motion_mirroring = Vector2(1152, 0)
-
-[node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 1206.0
-offset_bottom = 658.0
-texture = ExtResource("3_cqvi5")
+[node name="ColorRect" type="ColorRect" parent="Background/Floor" index="1"]
+offset_top = 638.0
+offset_right = 1166.0
+offset_bottom = 655.0
+color = Color(0, 0, 0, 1)
 
 [node name="ObstacleTimer" parent="." index="1"]
 wait_time = 0.2

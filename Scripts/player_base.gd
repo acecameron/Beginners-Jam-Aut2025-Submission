@@ -13,7 +13,6 @@ func move():
 	$AnimatedSprite2D.play("running")
 	
 func die():
-	print("Stopping now")
 	alive = false
 	velocity.x = 0
 	$AnimatedSprite2D.play("death")
