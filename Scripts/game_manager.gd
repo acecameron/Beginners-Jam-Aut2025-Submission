@@ -18,6 +18,7 @@ var level_scenes : Array[PackedScene] = [level_normal, level_flappy, level_g_swi
 var current_level : Node2D
 
 func _ready() -> void:
+	score = 0
 	score_label.text = "00000"
 	$ScoreTimer.start()
 	high_score_box.hide()
@@ -54,8 +55,9 @@ func replace_level() -> void:
 	add_child(current_level)
 	print(current_level)
 	print(current_level.get_script())
-	current_level.set_player_speed(speed)
-	speed += 10
+	speed += 130
+	current_level.set_game_speed(speed)
+	
 	
 func stop_game():
 	$ScoreTimer.stop()
@@ -63,9 +65,11 @@ func stop_game():
 		high_score_label.text = String.num_int64(score).pad_zeros(5)
 	game_over_ui.show()
 	high_score_box.show()
+	
 
 
 func _on_start_over_button_pressed() -> void:
 	print("Start over pressed")
 	current_level.queue_free()
 	_ready()
+	
