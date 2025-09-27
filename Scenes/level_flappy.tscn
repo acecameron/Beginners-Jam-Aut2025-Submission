@@ -28,19 +28,23 @@ motion_mirroring = Vector2(1152, 0)
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 texture = ExtResource("3_fpi4d")
 
+[node name="ObstacleTimer" parent="." index="2"]
+wait_time = 0.7
+
 [node name="Label" type="Label" parent="." index="3"]
+z_index = 1
 offset_left = 18.0
-offset_top = 202.0
-offset_right = 1498.0
-offset_bottom = 371.0
+offset_right = 1210.0
+offset_bottom = 169.0
 theme_override_fonts/font = ExtResource("4_3h3v2")
 theme_override_font_sizes/font_size = 50
-text = "Press [Space] to fly"
+text = "PRESS [SPACE] 
+TO FLY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player_Flappy" parent="." index="4" instance=ExtResource("3_ldv6u")]
-position = Vector2(134, 422)
+position = Vector2(76, 280)
 
 [node name="Camera2D" type="Camera2D" parent="Player_Flappy" index="0"]
 position = Vector2(500, 0)

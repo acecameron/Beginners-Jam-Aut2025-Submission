@@ -19,12 +19,13 @@ texture = ExtResource("3_tfupq")
 
 [node name="Label" type="Label" parent="." index="2"]
 offset_left = 18.0
-offset_top = 202.0
-offset_right = 1498.0
-offset_bottom = 371.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 158.0
 theme_override_fonts/font = ExtResource("4_6uugn")
 theme_override_font_sizes/font_size = 50
-text = "Press [Space] to jump"
+text = "PRESS [SPACE] 
+TO JUMP"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -42,14 +42,19 @@ offset_right = 1206.0
 offset_bottom = 658.0
 texture = ExtResource("3_cqvi5")
 
+[node name="ObstacleTimer" parent="." index="1"]
+wait_time = 0.2
+
 [node name="Label" type="Label" parent="." index="2"]
+z_index = 1
 offset_left = 232.0
-offset_top = 196.0
-offset_right = 1712.0
-offset_bottom = 365.0
+offset_top = 40.0
+offset_right = 1029.0
+offset_bottom = 193.0
 theme_override_fonts/font = ExtResource("5_bl8ks")
 theme_override_font_sizes/font_size = 50
-text = "Press [Space] to change gravity"
+text = "PRESS [SPACE] TO
+ CHANGE GRAVITY"
 horizontal_alignment = 1
 vertical_alignment = 1
 

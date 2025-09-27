@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxumisw6bildd"]
+[gd_scene load_steps=4 format=3 uid="uid://dxumisw6bildd"]
 
+[ext_resource type="Script" uid="uid://ck1wll4j65b6p" path="res://Scripts/obstacle_base.gd" id="1_4q776"]
 [ext_resource type="Texture2D" uid="uid://crsls4u3lnesq" path="res://Sprites/Obsacle_Sprites/Cacti.png" id="2_4q776"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q776"]
 size = Vector2(78, 60)
 
 [node name="obstacle_nomral_2" type="Area2D" groups=["Obstacles"]]
+script = ExtResource("1_4q776")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4q776")
