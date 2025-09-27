@@ -33,3 +33,7 @@ shape = SubResource("RectangleShape2D_kqtft")
 position = Vector2(0, 225)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_ep803")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.5, -1.52588e-05)
+scale = Vector2(3.75, 48)

@@ -2,14 +2,13 @@ extends "level_base.gd"
 
 
 func _on_player_g_switch_game_over() -> void:
-	print("G-Switch game over")
 	main_game.stop_game()
 	
 func _ready() -> void:
 	main_game = get_parent()
 	player = $"Player_G-Switch"
-	min_time = 0.5
-	max_time = 1 
+	min_time = 0.2
+	max_time = 0.5
 
 func _process(delta: float) -> void:
 	if is_playing:
@@ -27,8 +26,15 @@ func obstacle_spawn(rnd : int, obstacle_speed : int):
 		player.connect("game_over", obstacle._on_player_game_over)
 		player.connect("game_over", game_over)
 		add_child(obstacle)
-	#if rnd == 2:
+	#elif rnd == 2:
 		#obstacle = preload("res://Scenes/g_switch_obstacle_2.tscn").instantiate()
 		#obstacle.global_position = $Background/Obstacle_Spawn.position
 		#add_child(obstacle)
 		#print("Laser")
+	elif rnd == 3:
+		obstacle = preload("res://Scenes/g_switch_obstacle_3.tscn").instantiate()
+		obstacle.global_position = $Background/Obstacle_Spawn.position
+		obstacle.speed = obstacle_speed
+		player.connect("game_over", obstacle._on_player_game_over)
+		player.connect("game_over", game_over)
+		add_child(obstacle)

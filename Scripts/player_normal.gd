@@ -7,7 +7,7 @@ func _physics_process(delta: float) -> void:
 	if not alive:
 		return
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		print("Jumping now")
+		$AudioStreamPlayer.play(0.0)
 		velocity.y = JUMPFORCE  # already negative, so no need to multiply
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
 		velocity.y *= 0.5

@@ -10,7 +10,14 @@ script = ExtResource("1_ikmr1")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ColorRect" type="ColorRect" parent="Background"]
+visible = false
 offset_right = 1214.0
 offset_bottom = 680.0
 color = Color(0, 0.850703, 0.856863, 1)
@@ -23,12 +30,6 @@ shape = SubResource("WorldBoundaryShape2D_g0s86")
 
 [node name="Obstacle_Spawn" type="Marker2D" parent="Background"]
 position = Vector2(1175, 620)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
-
-[node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="ObstacleTimer" type="Timer" parent="."]
 autostart = true

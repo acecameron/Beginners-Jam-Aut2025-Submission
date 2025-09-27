@@ -4,7 +4,7 @@ var obstacle_paths : Array [String]
 var main_game = get_parent()
 var player : CharacterBody2D
 var min_obstacle = 1
-var max_obstacle = 2
+var max_obstacle = 3
 var is_playing = true
 var game_speed := 300
 var min_time : float 
@@ -22,10 +22,9 @@ func _on_obstacle_timer_timeout() -> void:
 
 
 func set_game_speed(new_speed: int = 50) -> void:
-	game_speed = new_speed
+	game_speed += new_speed
 func game_over():
 	is_playing = false
-	print ("game over")
 
 func obstacle_spawn(rnd : int, obstacle_speed : int):
 	pass
