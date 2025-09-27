@@ -4,6 +4,7 @@ var score := 0
 var level := 0
 var high_score := 0
 var speed := 300
+var game_playing := true
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
 @onready var high_score_box : HBoxContainer = $"CanvasLayer/Score_And_Highscore/HighScoreBox"
@@ -18,6 +19,8 @@ var level_scenes : Array[PackedScene] = [level_normal, level_flappy, level_g_swi
 var current_level : Node2D
 
 func _ready() -> void:
+	$ScoreTimer.wait_time = 0.3
+	game_playing = true
 	score = 0
 	score_label.text = "00000"
 	$ScoreTimer.start()
@@ -27,6 +30,11 @@ func _ready() -> void:
 	current_level = level_normal.instantiate()
 	add_child(current_level)
 
+func _process(delta: float) -> void:
+	if game_playing:
+		return
+	if Input.is_action_just_pressed("Jump"):
+		_on_start_over_button_pressed()
 func update_score_label() -> void:
 	score_label.text = String.num_int64(score).pad_zeros(5)
 
@@ -39,6 +47,7 @@ func _on_score_timer_timeout() -> void:
 		replace_level()
 	if score % 60 == 0:
 		speed += 100
+		$ScoreTimer.wait_time = max(0.15, $ScoreTimer.wait_time - 0.05)
 		
 
 func replace_level() -> void:
@@ -60,6 +69,7 @@ func replace_level() -> void:
 
 	
 func stop_game():
+	game_playing = false
 	$ScoreTimer.stop()
 	if high_score < score:
 		high_score_label.text = String.num_int64(score).pad_zeros(5)
@@ -69,7 +79,5 @@ func stop_game():
 
 
 func _on_start_over_button_pressed() -> void:
-	print("Start over pressed")
 	current_level.queue_free()
 	_ready()
-	
