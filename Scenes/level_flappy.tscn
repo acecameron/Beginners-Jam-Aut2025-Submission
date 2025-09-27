@@ -28,9 +28,6 @@ motion_mirroring = Vector2(1152, 0)
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 texture = ExtResource("3_fpi4d")
 
-[node name="ObstacleTimer" parent="." index="2"]
-wait_time = 0.7
-
 [node name="Label" type="Label" parent="." index="3"]
 z_index = 1
 offset_left = 18.0
