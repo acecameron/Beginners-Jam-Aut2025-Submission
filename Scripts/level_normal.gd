@@ -42,4 +42,4 @@ func prepare_to_switch() -> void:
 	if shader_material and sprite_shader_material:
 		print("Shader found")
 		shader_material.set_shader_parameter("intensity", 0.5)
-		sprite_shader_material.set_shader_parameter("intensity", 0.5)
+		sprite_shader_material.set_shader_parameter("intensity", 0.5) 
