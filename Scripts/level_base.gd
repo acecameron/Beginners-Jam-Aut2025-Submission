@@ -19,13 +19,15 @@ func _on_obstacle_timer_timeout() -> void:
 	else:
 		$ObstacleTimer.stop()
 
-
-
 func set_game_speed(new_speed: int = 50) -> void:
 	game_speed = new_speed
+	
 func game_over():
 	is_playing = false
-	print ("game over")
-
+	
+func set_timer_range(new_min_timer : float, new_max_timer : float) -> void:
+	min_time = max(0.1, min_time - new_min_timer)
+	max_time = max(0.1, min_time - new_max_timer)
+	
 func obstacle_spawn(rnd : int, obstacle_speed : int):
 	pass

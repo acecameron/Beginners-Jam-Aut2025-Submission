@@ -19,6 +19,7 @@ var level_scenes : Array[PackedScene] = [level_normal, level_flappy, level_g_swi
 var current_level : Node2D
 
 func _ready() -> void:
+	speed = 300
 	$ScoreTimer.wait_time = 0.3
 	game_playing = true
 	score = 0
@@ -33,7 +34,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if game_playing:
 		return
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Replay"):
 		_on_start_over_button_pressed()
 func update_score_label() -> void:
 	score_label.text = String.num_int64(score).pad_zeros(5)
@@ -44,7 +45,9 @@ func _on_score_timer_timeout() -> void:
 	
 	# Every 100 points, replace the level
 	if score % 30 == 0:
-		replace_level()
+		current_level.prepare_to_switch()
+		$SwitchTimer.start()
+		
 	if score % 60 == 0:
 		speed += 100
 		$ScoreTimer.wait_time = max(0.15, $ScoreTimer.wait_time - 0.05)
@@ -64,6 +67,7 @@ func replace_level() -> void:
 			break
 	current_level = new_scene.instantiate()
 	current_level.set_game_speed(speed)
+	current_level.set_timer_range(0.1, 0.1)
 
 	add_child(current_level)
 
@@ -81,3 +85,7 @@ func stop_game():
 func _on_start_over_button_pressed() -> void:
 	current_level.queue_free()
 	_ready()
+
+
+func _on_switch_timer_timeout() -> void:
+	replace_level()

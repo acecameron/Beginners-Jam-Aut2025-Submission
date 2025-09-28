@@ -30,3 +30,10 @@ func obstacle_spawn(rnd : int, obstacle_speed : int):
 	player.connect("game_over", game_over)
 	
 	add_child(obstacle)
+	
+func prepare_to_switch() -> void:
+	print("Switching")
+	var shader_material = $Background/ParallaxLayer/TextureRect.material
+	if shader_material:
+		print("Shader found")
+		shader_material.set_shader_parameter("intensity", 0.5)

@@ -8,12 +8,13 @@ func _on_player_g_switch_game_over() -> void:
 func _ready() -> void:
 	main_game = get_parent()
 	player = $"Player_G-Switch"
-	min_time = 0.5
-	max_time = 1 
+	min_time = 0.4
+	max_time = 0.5       
 
 func _process(delta: float) -> void:
 	if is_playing:
 		$Background/ParallaxLayer.motion_offset.x -= game_speed * delta
+		
 func set_player_speed(new_speed: int = 50) -> void:
 	player.speed = new_speed
 
@@ -32,3 +33,10 @@ func obstacle_spawn(rnd : int, obstacle_speed : int):
 		#obstacle.global_position = $Background/Obstacle_Spawn.position
 		#add_child(obstacle)
 		#print("Laser")
+
+func prepare_to_switch() -> void:
+	print("Switching")
+	var shader_material = $Background/ParallaxLayer/TextureRect.material
+	if shader_material:
+		print("Shader found")
+		shader_material.set_shader_parameter("intensity", 0.5)
