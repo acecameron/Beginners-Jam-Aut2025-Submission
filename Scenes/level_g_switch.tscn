@@ -1,22 +1,42 @@
-[gd_scene load_steps=7 format=3 uid="uid://cei0r77srffog"]
+[gd_scene load_steps=8 format=3 uid="uid://cei0r77srffog"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_xhpfb"]
 [ext_resource type="PackedScene" uid="uid://bodxxwraqlwv2" path="res://Scenes/player_g_switch.tscn" id="2_ln2fx"]
 [ext_resource type="Script" uid="uid://cvecvcvrhaiwy" path="res://Scripts/level_g_switch.gd" id="2_uvxt0"]
+[ext_resource type="Shader" uid="uid://dsgnsw78tw80s" path="res://Shaders/game_manager.gdshader" id="3_bl8ks"]
 [ext_resource type="Texture2D" uid="uid://cu8kdm2eeilg8" path="res://Sprites/Backgrounds/Background_G-Switch.png" id="3_cqvi5"]
-[ext_resource type="FontFile" uid="uid://xfehdl70wchs" path="res://Data/Fonts/nintendo-nes-font.otf" id="5_bl8ks"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhpfb"]
 normal = Vector2(0, 1)
 distance = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1trqq"]
+resource_local_to_scene = true
+shader = ExtResource("3_bl8ks")
+shader_parameter/intensity = 0.0
+shader_parameter/glitch_frequency = 2.0
+shader_parameter/glitch_duration = 0.1
+shader_parameter/red_displacement = 0.02
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 0.2
+shader_parameter/slice_intensity = 0.4
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0
 
 [node name="level_g_switch" instance=ExtResource("1_xhpfb")]
 script = ExtResource("2_uvxt0")
 
 [node name="ColorRect" parent="Background" index="0"]
 visible = false
+color = Color(0.842009, 0.730625, 0.523146, 1)
+
+[node name="CollisionShape2D" parent="Background/Floor" index="0"]
+position = Vector2(1, 587)
 
 [node name="ColorRect" type="ColorRect" parent="Background/Floor" index="1"]
+visible = false
 offset_top = 638.0
 offset_right = 1166.0
 offset_bottom = 655.0
@@ -25,6 +45,7 @@ color = Color(0, 0, 0, 1)
 [node name="Ceiling" type="StaticBody2D" parent="Background" index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Ceiling" index="0"]
+position = Vector2(0, 53)
 shape = SubResource("WorldBoundaryShape2D_xhpfb")
 
 [node name="ColorRect" type="ColorRect" parent="Background/Ceiling" index="1"]
@@ -32,39 +53,34 @@ offset_right = 1153.0
 offset_bottom = 17.0
 color = Color(0, 0, 0, 1)
 
+[node name="Obstacle_Spawn" parent="Background" index="3"]
+position = Vector2(1241, 587)
+
 [node name="ParallaxLayer" parent="Background" index="4"]
 motion_mirroring = Vector2(1152, 0)
 
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
+material = SubResource("ShaderMaterial_1trqq")
 offset_left = -5.0
-offset_top = -5.0
+offset_top = 26.0
 offset_right = 1206.0
-offset_bottom = 658.0
+offset_bottom = 732.0
 texture = ExtResource("3_cqvi5")
 
 [node name="ObstacleTimer" parent="." index="1"]
-wait_time = 0.2
+wait_time = 0.5
 
-[node name="Label" type="Label" parent="." index="2"]
-z_index = 1
-offset_left = 232.0
-offset_top = 40.0
-offset_right = 1029.0
-offset_bottom = 193.0
-theme_override_fonts/font = ExtResource("5_bl8ks")
-theme_override_font_sizes/font_size = 50
-text = "PRESS [SPACE] TO
- CHANGE GRAVITY"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player_G-Switch" parent="." index="3" instance=ExtResource("2_ln2fx")]
-position = Vector2(94, 486)
+[node name="Player_G-Switch" parent="." index="2" instance=ExtResource("2_ln2fx")]
+position = Vector2(62, 575)
 
 [node name="Camera2D" type="Camera2D" parent="Player_G-Switch" index="4"]
 position = Vector2(500, 0)
 limit_left = 0
 limit_top = 0
 limit_bottom = 0
+
+[node name="Label" parent="." index="3"]
+offset_right = 1187.0
+text = "CHANGE GRAVITY"
 
 [connection signal="game_over" from="Player_G-Switch" to="." method="_on_player_g_switch_game_over"]

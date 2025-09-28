@@ -20,6 +20,14 @@ offset_bottom = 75.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Score_And_Highscore"]
+custom_minimum_size = Vector2(177, 0)
+layout_mode = 2
+offset_left = 729.0
+offset_right = 1152.0
+offset_bottom = 69.0
+color = Color(0, 0, 0, 1)
+
 [node name="ScoreBox" type="HBoxContainer" parent="CanvasLayer/Score_And_Highscore"]
 layout_mode = 1
 anchors_preset = 1
@@ -30,13 +38,11 @@ offset_bottom = 75.0
 grow_horizontal = 0
 
 [node name="Curr_Score_Title" type="Label" parent="CanvasLayer/Score_And_Highscore/ScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "SCORE:"
 
 [node name="Curr_Score_Score" type="Label" parent="CanvasLayer/Score_And_Highscore/ScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "00000"
@@ -52,14 +58,12 @@ offset_bottom = 75.0
 grow_horizontal = 0
 
 [node name="Hi_Score_Title" type="Label" parent="CanvasLayer/Score_And_Highscore/HighScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "HI:"
 
 [node name="Hi_Score_Score" type="Label" parent="CanvasLayer/Score_And_Highscore/HighScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "00000"
@@ -69,6 +73,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 647.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Game_Over"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 234.0
+offset_right = 934.0
+offset_bottom = 404.0
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Game_Over"]
 layout_mode = 1
@@ -89,7 +101,9 @@ modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 theme_override_font_sizes/font_size = 33
-text = "G A M E  O V E R"
+text = "   G A M E  O V E R
+
+PRESS R TO PLAY AGAIN"
 
 [node name="Start_Over_Button" type="TextureButton" parent="CanvasLayer/Game_Over/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -98,5 +112,9 @@ layout_mode = 2
 texture_normal = ExtResource("3_yqty0")
 stretch_mode = 5
 
+[node name="SwitchTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Game_Over/VBoxContainer/Start_Over_Button" to="." method="_on_start_over_button_pressed"]
+[connection signal="timeout" from="SwitchTimer" to="." method="_on_switch_timer_timeout"]
