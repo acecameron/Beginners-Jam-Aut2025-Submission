@@ -62,7 +62,7 @@ motion_mirroring = Vector2(1152, 0)
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 material = SubResource("ShaderMaterial_1trqq")
 offset_left = -5.0
-offset_top = 1.0
+offset_top = 19.0
 offset_right = 1206.0
 offset_bottom = 732.0
 texture = ExtResource("3_cqvi5")
@@ -71,7 +71,7 @@ texture = ExtResource("3_cqvi5")
 wait_time = 0.5
 
 [node name="Player_G-Switch" parent="." index="2" instance=ExtResource("2_ln2fx")]
-position = Vector2(62, 575)
+position = Vector2(51, 575)
 
 [node name="Camera2D" type="Camera2D" parent="Player_G-Switch" index="4"]
 position = Vector2(500, 0)
@@ -79,7 +79,7 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 0
 
-[node name="Label" parent="." index="3"]
+[node name="Label" parent="." index="4"]
 offset_right = 1187.0
 text = "CHANGE GRAVITY"
 

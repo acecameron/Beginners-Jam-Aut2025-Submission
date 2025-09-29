@@ -34,6 +34,10 @@ offset_bottom = 40.0
 [node name="ObstacleTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="TextTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [node name="Label" type="Label" parent="."]
 z_index = 1
 offset_left = 2.0
@@ -47,3 +51,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]
