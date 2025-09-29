@@ -77,8 +77,8 @@ offset_bottom = 647.0
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Game_Over"]
 layout_mode = 0
 offset_left = 228.0
-offset_top = 234.0
-offset_right = 934.0
+offset_top = 239.0
+offset_right = 923.0
 offset_bottom = 404.0
 color = Color(0, 0, 0, 1)
 
@@ -97,7 +97,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Game_Over_Texture" type="Label" parent="CanvasLayer/Game_Over/VBoxContainer"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 theme_override_font_sizes/font_size = 33

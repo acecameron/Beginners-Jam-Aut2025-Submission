@@ -13,9 +13,9 @@ shader = ExtResource("3_t1agj")
 shader_parameter/intensity = 0.0
 shader_parameter/glitch_frequency = 2.0
 shader_parameter/glitch_duration = 0.1
-shader_parameter/red_displacement = 0.02
-shader_parameter/green_displacement = 0.02
-shader_parameter/blue_displacement = 0.02
+shader_parameter/red_displacement = 0.029
+shader_parameter/green_displacement = 0.03
+shader_parameter/blue_displacement = 0.036
 shader_parameter/scanline_intensity = 0.3
 shader_parameter/noise_intensity = 0.2
 shader_parameter/slice_intensity = 0.4
@@ -26,13 +26,13 @@ shader_parameter/negative_intensity = 0.0
 resource_local_to_scene = true
 shader = ExtResource("3_t1agj")
 shader_parameter/intensity = 0.0
-shader_parameter/glitch_frequency = 0.1
-shader_parameter/glitch_duration = 0.01
-shader_parameter/red_displacement = 0.0
-shader_parameter/green_displacement = 0.0
+shader_parameter/glitch_frequency = 2.0
+shader_parameter/glitch_duration = 0.1
+shader_parameter/red_displacement = 0.02
+shader_parameter/green_displacement = 0.02
 shader_parameter/blue_displacement = 0.02
 shader_parameter/scanline_intensity = 0.3
-shader_parameter/noise_intensity = 0.2
+shader_parameter/noise_intensity = 1.0
 shader_parameter/slice_intensity = 0.4
 shader_parameter/ghost_intensity = 0.1
 shader_parameter/negative_intensity = 0.0
@@ -42,8 +42,8 @@ script = ExtResource("2_qrjwe")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" index="0"]
 material = SubResource("ShaderMaterial_57njw")
-position = Vector2(575.5, 300.5)
-scale = Vector2(4.50391, 4.11806)
+position = Vector2(575.5, 298.5)
+scale = Vector2(4.50391, 4.14584)
 texture = ExtResource("3_6uugn")
 
 [node name="ColorRect" parent="Background" index="1"]

@@ -62,7 +62,7 @@ motion_mirroring = Vector2(1152, 0)
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
 material = SubResource("ShaderMaterial_1trqq")
 offset_left = -5.0
-offset_top = 26.0
+offset_top = 1.0
 offset_right = 1206.0
 offset_bottom = 732.0
 texture = ExtResource("3_cqvi5")
