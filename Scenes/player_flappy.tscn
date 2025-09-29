@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://e7d7wvwdmd0q"]
+[gd_scene load_steps=9 format=3 uid="uid://e7d7wvwdmd0q"]
 
 [ext_resource type="PackedScene" uid="uid://cqlv30mlc06i6" path="res://Scenes/player_base.tscn" id="1_f62gv"]
 [ext_resource type="Script" uid="uid://bwo8r4gp1galm" path="res://Scripts/player_flappy.gd" id="2_bt04x"]
@@ -7,25 +7,32 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_op6ao"]
 atlas = ExtResource("3_8551e")
-region = Rect2(0, 144, 256, 144)
+region = Rect2(0, 274, 256, 137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lu2cv"]
 atlas = ExtResource("3_8551e")
 region = Rect2(0, 0, 256, 144)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyg4m"]
+atlas = ExtResource("3_8551e")
+region = Rect2(0, 144, 256, 144)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cp3o"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op6ao")
+}],
 "loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_op6ao")
+"texture": SubResource("AtlasTexture_lu2cv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lu2cv")
+"texture": SubResource("AtlasTexture_wyg4m")
 }],
 "loop": true,
 "name": &"jump",

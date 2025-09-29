@@ -104,6 +104,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Flappy_Background" type="TextureRect" parent="CanvasLayer/Control"]
 visible = false
 material = SubResource("ShaderMaterial_2bm1k")
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("3_6u3uv")
@@ -118,6 +119,7 @@ grow_vertical = 2
 
 [node name="Normal_Background" type="TextureRect" parent="CanvasLayer/Control/Normal_Backgrounds"]
 material = SubResource("ShaderMaterial_2bm1k")
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("5_4sb7q")
@@ -125,6 +127,7 @@ texture = ExtResource("5_4sb7q")
 [node name="Normal_Floor" type="TextureRect" parent="CanvasLayer/Control/Normal_Backgrounds"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_68yqx")
+layout_mode = 0
 offset_top = 315.0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -133,6 +136,7 @@ texture = ExtResource("4_ekb2d")
 [node name="G-Switch_Background" type="TextureRect" parent="CanvasLayer/Control"]
 visible = false
 material = SubResource("ShaderMaterial_t3vxx")
+layout_mode = 0
 offset_left = -5.0
 offset_top = 1.0
 offset_right = 1206.0
