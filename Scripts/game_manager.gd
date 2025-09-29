@@ -44,11 +44,11 @@ func _on_score_timer_timeout() -> void:
 	update_score_label()
 	
 	# Every 100 points, replace the level
-	if score % 30 == 0 and game_playing:
+	if score % 50 == 0 and game_playing:
 		current_level.prepare_to_switch()
 		$SwitchTimer.start()
 		
-	if score % 60 == 0 and game_playing:
+	if score % 100 == 0 and game_playing:
 		speed += 100
 		$ScoreTimer.wait_time = max(0.15, $ScoreTimer.wait_time - 0.05)
 		
