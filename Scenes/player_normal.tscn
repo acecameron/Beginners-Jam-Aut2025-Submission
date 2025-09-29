@@ -7,7 +7,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6v41"]
 atlas = ExtResource("3_n1upi")
-region = Rect2(0, 0, 256, 144)
+region = Rect2(768, 0, 256, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hd70"]
 atlas = ExtResource("3_n1upi")
@@ -49,13 +49,11 @@ animations = [{
 [node name="Player_Dinasour" instance=ExtResource("1_eyty2")]
 script = ExtResource("2_6bfks")
 
-[node name="Sprite2D" parent="." index="0"]
-visible = false
-
-[node name="physics_collision" parent="." index="1"]
+[node name="physics_collision" parent="." index="0"]
 position = Vector2(3, -7)
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(7, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_muln1")
 animation = &"death"

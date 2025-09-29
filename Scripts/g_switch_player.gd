@@ -10,15 +10,15 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("running")
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Jump") and (is_on_ceiling() or is_on_floor()) and alive:
 		$AudioStreamPlayer.play(0.0)
 		position.y -= jump
 		jump *= -1
 		if dir == Vector2.UP:
-			gravity = 250
+			gravity = 300
 			dir = Vector2.DOWN
 		else:
-			gravity = -250
+			gravity = -300
 			dir = Vector2.UP
 		if $AnimatedSprite2D.flip_v:
 			$AnimatedSprite2D.flip_v = false

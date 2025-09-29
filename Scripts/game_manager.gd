@@ -4,6 +4,7 @@ var score := 0
 var level := 0
 var high_score := 0
 var speed := 300
+var game_playing := true
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
 @onready var high_score_box : HBoxContainer = $"CanvasLayer/Score_And_Highscore/HighScoreBox"
@@ -18,15 +19,24 @@ var level_scenes : Array[PackedScene] = [level_normal, level_flappy, level_g_swi
 var current_level : Node2D
 
 func _ready() -> void:
+	speed = 300
+	$ScoreTimer.wait_time = 0.3
+	game_playing = true
 	score = 0
 	score_label.text = "00000"
 	$ScoreTimer.start()
-	high_score_box.hide()
+	if high_score == 0:
+		high_score_box.hide()
 	game_over_ui.hide()
 	# start with one level
 	current_level = level_normal.instantiate()
 	add_child(current_level)
 
+func _process(delta: float) -> void:
+	if game_playing:
+		return
+	if Input.is_action_just_pressed("Replay"):
+		_on_start_over_button_pressed()
 func update_score_label() -> void:
 	score_label.text = String.num_int64(score).pad_zeros(5)
 
@@ -35,8 +45,15 @@ func _on_score_timer_timeout() -> void:
 	update_score_label()
 	
 	# Every 100 points, replace the level
-	if score % 30 == 0:
-		replace_level()
+	if score % 50 == 0 and game_playing:
+		current_level.prepare_to_switch()
+		$SwitchTimer.start()
+		
+	if score % 100 == 0 and game_playing:
+		speed += 100
+		$hunderd_pts_sound.play()
+		$ScoreTimer.wait_time = max(0.15, $ScoreTimer.wait_time - 0.05)
+		
 
 func replace_level() -> void:
 	if not current_level:
@@ -50,26 +67,30 @@ func replace_level() -> void:
 		if candidate.resource_path != current_level.scene_file_path:
 			new_scene = candidate
 			break
-	
 	current_level = new_scene.instantiate()
-	add_child(current_level)
-	print(current_level)
-	print(current_level.get_script())
-	speed += 130
 	current_level.set_game_speed(speed)
-	
+	current_level.set_timer_range(0.1, 0.1)
+
+	add_child(current_level)
+
 	
 func stop_game():
+	game_playing = false
 	$ScoreTimer.stop()
+	$SwitchTimer.stop()
 	if high_score < score:
+		high_score = score
 		high_score_label.text = String.num_int64(score).pad_zeros(5)
 	game_over_ui.show()
 	high_score_box.show()
 	
+	
 
 
 func _on_start_over_button_pressed() -> void:
-	print("Start over pressed")
 	current_level.queue_free()
 	_ready()
-	
+
+
+func _on_switch_timer_timeout() -> void:
+	replace_level()

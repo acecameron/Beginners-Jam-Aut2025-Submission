@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyx6vfpv20nkc"]
+[gd_scene load_steps=4 format=3 uid="uid://dyx6vfpv20nkc"]
 
 [ext_resource type="Script" uid="uid://dg2uoywhnbiv7" path="res://Scripts/level_base.gd" id="1_ikmr1"]
+[ext_resource type="FontFile" uid="uid://xfehdl70wchs" path="res://Data/Fonts/nintendo-nes-font.otf" id="2_fhsqj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g0s86"]
 distance = -12.0
@@ -9,18 +10,6 @@ distance = -12.0
 script = ExtResource("1_ikmr1")
 
 [node name="Background" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
-
-[node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-visible = false
-offset_right = 1214.0
-offset_bottom = 680.0
-color = Color(0, 0.850703, 0.856863, 1)
 
 [node name="Floor" type="StaticBody2D" parent="Background"]
 
@@ -31,7 +20,30 @@ shape = SubResource("WorldBoundaryShape2D_g0s86")
 [node name="Obstacle_Spawn" type="Marker2D" parent="Background"]
 position = Vector2(1175, 620)
 
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="TextureRect" type="TextureRect" parent="Background/ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 225.0
+offset_right = 1150.0
+offset_bottom = 323.0
+theme_override_fonts/font = ExtResource("2_fhsqj")
+theme_override_font_sizes/font_size = 50
+text = "TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ObstacleTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="TextTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]

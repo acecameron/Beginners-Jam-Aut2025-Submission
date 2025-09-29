@@ -1,8 +1,7 @@
-extends Area2D
+extends Node2D
 
-var speed := 400
+var speed := 300
 var player_alive := true
-
 
 func _process(delta: float) -> void:
 	if player_alive:

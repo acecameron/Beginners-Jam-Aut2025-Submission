@@ -9,8 +9,9 @@ size = Vector2(38, 60)
 [node name="obstacle_nomral_1" type="Area2D" groups=["Obstacles"]]
 script = ExtResource("1_7i2vu")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7i2vu")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_pilt6")

@@ -10,8 +10,8 @@ size = Vector2(83, 39)
 script = ExtResource("2_xwsoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("3_xwsoa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_xwsoa")

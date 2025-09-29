@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://oo6wlybn4agn"]
+[gd_scene load_steps=5 format=3 uid="uid://oo6wlybn4agn"]
 
 [ext_resource type="Script" uid="uid://dtrvjfcmr5y3u" path="res://Scripts/game_manager.gd" id="1_mmt5l"]
 [ext_resource type="FontFile" uid="uid://xfehdl70wchs" path="res://Data/Fonts/nintendo-nes-font.otf" id="2_fgdfb"]
 [ext_resource type="Texture2D" uid="uid://cu1f3u618i552" path="res://Sprites/Game_Over_Button.png" id="3_yqty0"]
+[ext_resource type="AudioStream" uid="uid://c0w35nnyw6xqx" path="res://Sounds/collect-points-190037.mp3" id="4_mmt5l"]
 
 [node name="Game_Manager" type="Node2D"]
 script = ExtResource("1_mmt5l")
@@ -30,13 +31,11 @@ offset_bottom = 75.0
 grow_horizontal = 0
 
 [node name="Curr_Score_Title" type="Label" parent="CanvasLayer/Score_And_Highscore/ScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "SCORE:"
 
 [node name="Curr_Score_Score" type="Label" parent="CanvasLayer/Score_And_Highscore/ScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "00000"
@@ -52,14 +51,12 @@ offset_bottom = 75.0
 grow_horizontal = 0
 
 [node name="Hi_Score_Title" type="Label" parent="CanvasLayer/Score_And_Highscore/HighScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "HI:"
 
 [node name="Hi_Score_Score" type="Label" parent="CanvasLayer/Score_And_Highscore/HighScoreBox"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 text = "00000"
@@ -85,11 +82,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Game_Over_Texture" type="Label" parent="CanvasLayer/Game_Over/VBoxContainer"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fgdfb")
 theme_override_font_sizes/font_size = 33
-text = "G A M E  O V E R"
+text = "   G A M E  O V E R
+
+PRESS R TO PLAY AGAIN"
 
 [node name="Start_Over_Button" type="TextureButton" parent="CanvasLayer/Game_Over/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -98,5 +96,12 @@ layout_mode = 2
 texture_normal = ExtResource("3_yqty0")
 stretch_mode = 5
 
+[node name="SwitchTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="hunderd_pts_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mmt5l")
+
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Game_Over/VBoxContainer/Start_Over_Button" to="." method="_on_start_over_button_pressed"]
+[connection signal="timeout" from="SwitchTimer" to="." method="_on_switch_timer_timeout"]

@@ -2,12 +2,13 @@ extends "level_base.gd"
 
 func _on_player_flappy_game_over() -> void:
 	main_game.stop_game()
+	
 
 func _ready() -> void:
 	main_game = get_parent()
 	player = $"Player_Flappy"
-	min_time = 0.7
-	max_time = 1.0
+	min_time = 1.5
+	max_time = 2
 	
 func _process(delta: float) -> void:
 	if is_playing:
@@ -23,10 +24,13 @@ func obstacle_spawn(rnd : int, obstacle_speed : int):
 		obstacle.global_position.y = $Background/Obstacle_Spawn.position.y - 200
 	elif rnd == 2:
 		obstacle.global_position.y = $Background/Obstacle_Spawn.position.y - 400
-	elif rnd == 3:
-		obstacle.global_position.y = $Background/Obstacle_Spawn.position.y - 300
 	obstacle.speed = obstacle_speed
 	player.connect("game_over", obstacle._on_player_game_over)
 	player.connect("game_over", game_over)
 	
 	add_child(obstacle)
+	
+func prepare_to_switch() -> void:
+	var shader_material = $Background/ParallaxLayer/TextureRect.material
+	if shader_material:
+		shader_material.set_shader_parameter("intensity", 0.5)

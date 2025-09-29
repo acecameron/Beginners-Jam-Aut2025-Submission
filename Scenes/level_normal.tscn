@@ -1,48 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp1hn6jtuswhx"]
+[gd_scene load_steps=9 format=3 uid="uid://cp1hn6jtuswhx"]
 
 [ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_8pwfw"]
 [ext_resource type="Script" uid="uid://wcwvm1w355xt" path="res://Scripts/level_normal.gd" id="2_qrjwe"]
-[ext_resource type="Texture2D" uid="uid://cyt5amwx2rgfr" path="res://Sprites/Backgrounds/Background_Normal.png" id="3_57njw"]
+[ext_resource type="Texture2D" uid="uid://cyt5amwx2rgfr" path="res://Sprites/Backgrounds/Background_Normal.png" id="3_6uugn"]
 [ext_resource type="PackedScene" uid="uid://bglc811ndptqi" path="res://Scenes/player_normal.tscn" id="3_qrjwe"]
-[ext_resource type="Texture2D" uid="uid://clmeij06j2u0b" path="res://Sprites/Backgrounds/Normal_Floor.png" id="3_t1agj"]
-[ext_resource type="FontFile" uid="uid://xfehdl70wchs" path="res://Data/Fonts/nintendo-nes-font.otf" id="4_6uugn"]
+[ext_resource type="Shader" uid="uid://dsgnsw78tw80s" path="res://Shaders/game_manager.gdshader" id="3_t1agj"]
+[ext_resource type="Texture2D" uid="uid://caeldy3unomni" path="res://Sprites/Backgrounds/Normal_Floor.png" id="4_t1agj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57njw"]
+resource_local_to_scene = true
+shader = ExtResource("3_t1agj")
+shader_parameter/intensity = 0.0
+shader_parameter/glitch_frequency = 2.0
+shader_parameter/glitch_duration = 0.1
+shader_parameter/red_displacement = 0.029
+shader_parameter/green_displacement = 0.03
+shader_parameter/blue_displacement = 0.036
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 0.2
+shader_parameter/slice_intensity = 0.4
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_csvxl"]
+resource_local_to_scene = true
+shader = ExtResource("3_t1agj")
+shader_parameter/intensity = 0.0
+shader_parameter/glitch_frequency = 2.0
+shader_parameter/glitch_duration = 0.1
+shader_parameter/red_displacement = 0.02
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 1.0
+shader_parameter/slice_intensity = 0.4
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0
 
 [node name="level_normal" instance=ExtResource("1_8pwfw")]
 script = ExtResource("2_qrjwe")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" index="0"]
-position = Vector2(577, 313)
-scale = Vector2(4.50781, 4.34722)
-texture = ExtResource("3_57njw")
+material = SubResource("ShaderMaterial_57njw")
+position = Vector2(575.5, 298.5)
+scale = Vector2(4.50391, 4.14584)
+texture = ExtResource("3_6uugn")
+
+[node name="CollisionShape2D" parent="Background/Floor" index="0"]
+position = Vector2(1, 587)
+
+[node name="Obstacle_Spawn" parent="Background" index="2"]
+position = Vector2(1181, 574)
+
+[node name="ParallaxLayer" parent="Background" index="3"]
+motion_scale = Vector2(2, 2)
+motion_offset = Vector2(50, 0)
+motion_mirroring = Vector2(1152, 0)
 
 [node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
-offset_left = 336.0
-offset_top = 501.0
-offset_right = 836.0
-offset_bottom = 645.0
+texture_filter = 1
+material = SubResource("ShaderMaterial_csvxl")
+offset_top = 315.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_t1agj")
 
-[node name="ColorRect" parent="Background" index="2"]
-visible = false
+[node name="Label" parent="." index="1"]
+theme_override_font_sizes/font_size = 40
+text = "PRESS \"SPACE\" TO JUMP"
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Floor" index="1"]
-position = Vector2(578, 575)
-scale = Vector2(2.312, 1)
-texture = ExtResource("3_t1agj")
-
-[node name="Label" type="Label" parent="." index="2"]
-offset_left = 18.0
-offset_top = 4.0
-offset_right = 1146.0
-offset_bottom = 158.0
-theme_override_fonts/font = ExtResource("4_6uugn")
-theme_override_font_sizes/font_size = 50
-text = "PRESS [SPACE] 
-TO JUMP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player_Dinasour" parent="." index="3" instance=ExtResource("3_qrjwe")]
-position = Vector2(80, 533)
+[node name="Player_Dinasour" parent="." index="2" instance=ExtResource("3_qrjwe")]
+position = Vector2(51, 575)
 
 [node name="Camera2D" type="Camera2D" parent="Player_Dinasour" index="4"]
 position = Vector2(500, 0)
