@@ -31,3 +31,7 @@ func set_timer_range(new_min_timer : float, new_max_timer : float) -> void:
 	
 func obstacle_spawn(rnd : int, obstacle_speed : int):
 	pass
+
+
+func _on_text_timer_timeout() -> void:
+	$Label.hide()

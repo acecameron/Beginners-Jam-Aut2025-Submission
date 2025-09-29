@@ -25,7 +25,8 @@ func _ready() -> void:
 	score = 0
 	score_label.text = "00000"
 	$ScoreTimer.start()
-	high_score_box.hide()
+	if high_score == 0:
+		high_score_box.hide()
 	game_over_ui.hide()
 	# start with one level
 	current_level = level_normal.instantiate()
@@ -50,6 +51,7 @@ func _on_score_timer_timeout() -> void:
 		
 	if score % 100 == 0 and game_playing:
 		speed += 100
+		$hunderd_pts_sound.play()
 		$ScoreTimer.wait_time = max(0.15, $ScoreTimer.wait_time - 0.05)
 		
 

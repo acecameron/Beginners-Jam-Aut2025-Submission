@@ -17,6 +17,7 @@ func die():
 	alive = false
 	velocity.x = 0
 	$AnimatedSprite2D.play("death")
+	$GameFailPlayer.play()
 	emit_signal("game_over")
 
 func _on_enemy_collison_area_area_entered(area: Area2D) -> void:
