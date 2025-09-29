@@ -3,7 +3,7 @@ extends Node2D
 var score := 0
 var level := 0
 var high_score := 0
-var speed := 300
+var speed := 400
 var game_playing := true
 
 @onready var score_label : Label = $"CanvasLayer/Score_And_Highscore/ScoreBox/Curr_Score_Score"
