@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7stk0gsbn0x"]
+
+[ext_resource type="Script" uid="uid://ck1wll4j65b6p" path="res://Scripts/obstacle_base.gd" id="1_iwh6q"]
+
+[node name="Obstacle_Base" type="Area2D" groups=["Obstacles"]]
+script = ExtResource("1_iwh6q")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

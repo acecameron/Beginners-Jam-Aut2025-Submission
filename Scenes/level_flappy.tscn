@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd0fw5k852gyk"]
+
+[ext_resource type="PackedScene" uid="uid://dyx6vfpv20nkc" path="res://Scenes/level_base.tscn" id="1_ldv6u"]
+[ext_resource type="Script" uid="uid://r58p8fujpdhc" path="res://Scripts/level_flappy.gd" id="2_ldv6u"]
+[ext_resource type="Shader" uid="uid://dsgnsw78tw80s" path="res://Shaders/game_manager.gdshader" id="3_3h3v2"]
+[ext_resource type="Texture2D" uid="uid://dsjm1g5fmiecs" path="res://Sprites/Backgrounds/Background_flappy.png" id="3_fpi4d"]
+[ext_resource type="PackedScene" uid="uid://e7d7wvwdmd0q" path="res://Scenes/player_flappy.tscn" id="3_ldv6u"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ibogc"]
+normal = Vector2(0, 1)
+distance = -98.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3h3v2"]
+resource_local_to_scene = true
+shader = ExtResource("3_3h3v2")
+shader_parameter/intensity = 0.0
+shader_parameter/glitch_frequency = 2.0
+shader_parameter/glitch_duration = 0.1
+shader_parameter/red_displacement = 0.02
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 0.2
+shader_parameter/slice_intensity = 0.4
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0
+
+[node name="level_flappy" instance=ExtResource("1_ldv6u")]
+script = ExtResource("2_ldv6u")
+
+[node name="Ceiling" type="StaticBody2D" parent="." index="0"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" index="0"]
+shape = SubResource("WorldBoundaryShape2D_ibogc")
+
+[node name="ColorRect" parent="Background" index="0"]
+visible = false
+
+[node name="ParallaxLayer" parent="Background" index="3"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" parent="Background/ParallaxLayer" index="0"]
+material = SubResource("ShaderMaterial_3h3v2")
+texture = ExtResource("3_fpi4d")
+
+[node name="Player_Flappy" parent="." index="3" instance=ExtResource("3_ldv6u")]
+position = Vector2(51, 280)
+
+[node name="Camera2D" type="Camera2D" parent="Player_Flappy" index="0"]
+position = Vector2(500, 0)
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
+
+[node name="Label" parent="." index="5"]
+text = "FLY"
+
+[connection signal="game_over" from="Player_Flappy" to="." method="_on_player_flappy_game_over"]

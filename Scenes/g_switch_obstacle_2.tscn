@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://db5pq1l2j4un5"]
+
+[ext_resource type="Texture2D" uid="uid://c1ak4br012kge" path="res://Sprites/Obsacle_Sprites/LaserSpriteSheet.png" id="2_5v8yv"]
+[ext_resource type="Script" uid="uid://ba86pr3v04fow" path="res://Scripts/g_switch_obstacle_2.gd" id="2_sdggv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asnqt"]
+atlas = ExtResource("2_5v8yv")
+region = Rect2(516, 0, 258, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v733"]
+atlas = ExtResource("2_5v8yv")
+region = Rect2(258, 0, 258, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50d4f"]
+atlas = ExtResource("2_5v8yv")
+region = Rect2(0, 0, 258, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkyfq"]
+atlas = ExtResource("2_5v8yv")
+region = Rect2(258, 0, 258, 146)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v8yv"]
+atlas = ExtResource("2_5v8yv")
+region = Rect2(516, 0, 258, 146)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tusss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asnqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v733")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50d4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkyfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v8yv")
+}],
+"loop": false,
+"name": &"Laser",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkyfq"]
+size = Vector2(2569, 54)
+
+[node name="G-Switch_Obstacle_2" type="Area2D" groups=["Obstacles"]]
+script = ExtResource("2_sdggv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
+scale = Vector2(10, 1)
+sprite_frames = SubResource("SpriteFrames_tusss")
+animation = &"Laser"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_jkyfq")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

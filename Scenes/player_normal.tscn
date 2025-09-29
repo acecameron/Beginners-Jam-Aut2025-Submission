@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://bglc811ndptqi"]
+
+[ext_resource type="PackedScene" uid="uid://cqlv30mlc06i6" path="res://Scenes/player_base.tscn" id="1_eyty2"]
+[ext_resource type="Script" uid="uid://beflsidyqoeyr" path="res://Scripts/player_normal.gd" id="2_6bfks"]
+[ext_resource type="Texture2D" uid="uid://bep1sugg3iamn" path="res://Sprites/Player_Sprites/NormalSpriteSheet.png" id="3_n1upi"]
+[ext_resource type="AudioStream" uid="uid://t1agjukgpxr8" path="res://Sounds/Normal_Jump.mp3" id="4_f6v41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6v41"]
+atlas = ExtResource("3_n1upi")
+region = Rect2(768, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hd70"]
+atlas = ExtResource("3_n1upi")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7gvn"]
+atlas = ExtResource("3_n1upi")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rieaj"]
+atlas = ExtResource("3_n1upi")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_muln1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6v41")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hd70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7gvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rieaj")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[node name="Player_Dinasour" instance=ExtResource("1_eyty2")]
+script = ExtResource("2_6bfks")
+
+[node name="Sprite2D" parent="." index="0"]
+visible = false
+
+[node name="physics_collision" parent="." index="1"]
+position = Vector2(3, -7)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_muln1")
+animation = &"death"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("4_f6v41")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dld1y4rq5bn0i"]
+
+[ext_resource type="Texture2D" uid="uid://cglilwk0ab84r" path="res://Sprites/Obsacle_Sprites/Pipe.png" id="1_ep803"]
+[ext_resource type="Script" uid="uid://bk6emtayxv5eb" path="res://Scripts/obstacle_flappy.gd" id="1_xjpqu"]
+[ext_resource type="Texture2D" uid="uid://cb1xfxi1jiw2f" path="res://Sprites/Obsacle_Sprites/Pipe_Downwards.png" id="2_2pbih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtft"]
+size = Vector2(76, 384)
+
+[node name="obstacle_flappy" type="Node2D" groups=["Obstacles"]]
+script = ExtResource("1_xjpqu")
+
+[node name="pipe_above" type="Area2D" parent="." groups=["Obstacles"]]
+position = Vector2(0, -62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_above"]
+position = Vector2(0, -225)
+shape = SubResource("RectangleShape2D_kqtft")
+
+[node name="Sprite2D" type="Sprite2D" parent="pipe_above"]
+position = Vector2(0, -226)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_2pbih")
+
+[node name="pipe_below" type="Area2D" parent="." groups=["Obstacles"]]
+position = Vector2(0, 62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_below"]
+position = Vector2(0, 225)
+shape = SubResource("RectangleShape2D_kqtft")
+
+[node name="Sprite2D" type="Sprite2D" parent="pipe_below"]
+position = Vector2(0, 225)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ep803")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
