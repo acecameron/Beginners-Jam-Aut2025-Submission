@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://df7stk0gsbn0x"]
-
-[node name="Obstacle_Small" type="Area2D" groups=["Obstacles"]]
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
